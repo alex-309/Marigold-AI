@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="settings.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timed Challenge — Marigold AI</title>
+    <script>(function(){var t=localStorage.getItem('marigold-theme');if(t==='dark')document.documentElement.classList.add('dark');var c=localStorage.getItem('marigold-contrast');if(c==='high')document.documentElement.classList.add('high-contrast');}());</script>
+</head>
+<body></body>
+<canvas id="bg-canvas"></canvas>
+<div class="topbar">
+    <div class="topbar-brand">
+        <a href="home.html">
+            <img class="homebutton" src="homebutton.png" alt="Home">
+        </a>
+        <div class="topbar-brand-text">
+            <h1 class="title">Marigold AI</h1>
+            <p class="subtitle" data-i18n="topbar_subtitle">Financial Literacy Coach For Teens</p>
+        </div>
+    </div>
+    <div class="topbar-right">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">☀</button>
+    </div>
+</div>
+<div id="sidebar" class="sidebar">
+    <button id="sidebar-tab" aria-label="Toggle menu">
+        <svg class="sidebar-ham" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="sidebar-content">
+        <div class="sidebar-tips-section" id="sidebar-tips-section">
+            <div class="sidebar-tips-toggle sidebar-nav-link" id="sidebar-tips-toggle" onclick="window.MarigoldI18n && window.MarigoldI18n.toggleTips()">
+                <svg class="tips-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                <span class="tips-label" data-i18n="nav_tips">Tips</span>
+                <svg class="tips-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sidebar-tips-options">
+                <a href="budgeting.html"><div class="tips-nav-item" data-i18n="nav_budgeting">Budgeting</div></a>
+                <a href="credit.html"><div class="tips-nav-item" data-i18n="nav_credit">Credit</div></a>
+                <a href="PLA.html"><div class="tips-nav-item" data-i18n-html="nav_pla_html">Predatory<br>Lending<br>Avoidance</div></a>
+                <a href="saving.html"><div class="tips-nav-item" data-i18n-html="nav_saving_html">Saving &amp;<br>Investing</div></a>
+                <a href="banking.html"><div class="tips-nav-item" data-i18n-html="nav_banking_html">Banking<br>Basics</div></a>
+            </div>
+        </div>
+        <a href="scenario.html" class="sidebar-nav-link" data-i18n="nav_scenario">Scenario Practice</a>
+        <a href="calculator.html" class="sidebar-nav-link" data-i18n="nav_calculator">Calculator</a>
+        <a href="expenses.html" class="sidebar-nav-link" data-i18n="nav_expenses">Expense Tracker</a>
+        <a href="quiz.html" class="sidebar-nav-link" data-i18n="nav_quiz">Quiz Center</a>
+        <a href="goals.html" class="sidebar-nav-link" data-i18n="nav_goals">Financial Goals</a>
+        <a href="index.html" class="sidebar-nav-link sidebar-back-link" data-i18n="nav_back">← Back to Menu</a>
+        <div class="sidebar-settings-section" id="sidebar-settings-section">
+            <div class="sidebar-settings-toggle" id="sidebar-settings-toggle" onclick="window.MarigoldI18n && window.MarigoldI18n.toggleSettings()">
+                <span class="settings-gear">⚙</span>
+                <span class="settings-label" data-i18n="sidebar_settings">Settings</span>
+                <span class="settings-chevron">▼</span>
+            </div>
+            <div class="sidebar-lang-options">
+                <button class="lang-btn" data-lang="en" onclick="window.MarigoldI18n.setLang('en')">
+                    <span class="lang-flag">🇬🇧</span>
+                    <span class="lang-name" data-i18n="lang_en">English</span>
+                    <span class="lang-check">✓</span>
+                </button>
+                <button class="lang-btn" data-lang="es" onclick="window.MarigoldI18n.setLang('es')">
+                    <span class="lang-flag">🇪🇸</span>
+                    <span class="lang-name" data-i18n="lang_es">Español</span>
+                    <span class="lang-check">✓</span>
+                </button>
+                <button class="lang-btn" data-lang="fr" onclick="window.MarigoldI18n.setLang('fr')">
+                    <span class="lang-flag">🇫🇷</span>
+                    <span class="lang-name" data-i18n="lang_fr">Français</span>
+                    <span class="lang-check">✓</span>
+                </button>
+                <div class="settings-contrast-label" data-i18n="settings_contrast">Contrast</div>
+                <button class="lang-btn contrast-btn" data-contrast="regular" onclick="window.MarigoldContrast && window.MarigoldContrast.set('regular')">
+                    <span class="lang-flag">🔆</span>
+                    <span class="lang-name" data-i18n="settings_regular_colors">Regular Colors</span>
+                    <span class="lang-check">✓</span>
+                </button>
+                <button class="lang-btn contrast-btn" data-contrast="high" onclick="window.MarigoldContrast && window.MarigoldContrast.set('high')">
+                    <span class="lang-flag">⬛</span>
+                    <span class="lang-name" data-i18n="settings_high_contrast">High Contrast</span>
+                    <span class="lang-check">✓</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="quiz-page">
+    <h1 class="quiz-page-header">⏱️ Timed Challenge</h1>
+    <p class="quiz-page-subtitle">Race the clock — answer as many questions as you can</p>
+
+    <!-- ── Setup ── -->
+    <div id="tc-setup" class="quiz-setup-card">
+        <div class="quiz-setup-section">
+            <span class="quiz-setup-label">Topic</span>
+            <div class="quiz-topic-row">
+                <button class="quiz-topic-btn active" data-topic="General Financial Literacy">General</button>
+                <button class="quiz-topic-btn" data-topic="Budgeting">Budgeting</button>
+                <button class="quiz-topic-btn" data-topic="Credit & Credit Scores">Credit</button>
+                <button class="quiz-topic-btn" data-topic="Saving & Emergency Funds">Saving</button>
+                <button class="quiz-topic-btn" data-topic="Banking & Accounts">Banking</button>
+            </div>
+        </div>
+        <div class="quiz-setup-section">
+            <span class="quiz-setup-label">Number of Questions</span>
+            <div class="quiz-count-row">
+                <button class="quiz-count-btn active" data-count="5">5</button>
+                <button class="quiz-count-btn" data-count="10">10</button>
+            </div>
+        </div>
+        <div class="quiz-setup-section">
+            <span class="quiz-setup-label">Difficulty</span>
+            <div class="quiz-count-row">
+                <button class="tc-diff-btn active" data-diff="easy" data-seconds="180">
+                    Easy <span class="tc-diff-time">3:00</span>
+                </button>
+                <button class="tc-diff-btn" data-diff="medium" data-seconds="90">
+                    Medium <span class="tc-diff-time">1:30</span>
+                </button>
+                <button class="tc-diff-btn" data-diff="hard" data-seconds="60">
+                    Hard <span class="tc-diff-time">1:00</span>
+                </button>
+            </div>
+        </div>
+        <button id="tc-generate-btn" class="quiz-generate-btn">Generate Challenge →</button>
+    </div>
+
+    <!-- ── Loading ── -->
+    <div id="tc-loading" class="quiz-loading hidden">
+        <div class="quiz-spinner"></div>
+        <p class="quiz-loading-text">Loading your challenge…</p>
+    </div>
+
+    <!-- ── Ready screen ── -->
+    <div id="tc-ready" class="hidden">
+        <div class="tc-ready-card">
+            <div class="tc-ready-icon">⏱️</div>
+            <h2 id="tc-ready-title" class="tc-ready-title"></h2>
+            <p id="tc-ready-desc" class="tc-ready-desc"></p>
+            <div id="tc-ready-meta" class="tc-ready-meta"></div>
+            <button id="tc-start-btn" class="tc-start-btn">Start!</button>
+        </div>
+    </div>
+
+    <!-- ── Active quiz ── -->
+    <div id="tc-active" class="hidden">
+        <!-- Timer -->
+        <div class="tc-timer-card" id="tc-timer-card">
+            <div class="tc-timer-display" id="tc-timer-display">0:00</div>
+            <div class="tc-timer-track">
+                <div class="tc-timer-bar" id="tc-timer-bar"></div>
+            </div>
+        </div>
+        <!-- Question progress -->
+        <div class="tc-q-progress-row">
+            <span class="tc-q-progress-label" id="tc-q-progress-label">Question 1 of 5</span>
+            <div class="tc-q-progress-track">
+                <div class="tc-q-progress-bar" id="tc-q-progress-bar" style="width:0%"></div>
+            </div>
+        </div>
+        <!-- Question card -->
+        <div class="tc-question-card" id="tc-question-card"></div>
+    </div>
+
+    <!-- ── Results ── -->
+    <div id="tc-results" class="hidden">
+        <div id="tc-score-banner" class="quiz-score-banner"></div>
+        <div id="tc-time-used-card" class="tc-time-used-card"></div>
+        <div id="tc-review-list" class="tc-review-list"></div>
+        <div class="quiz-result-actions">
+            <button id="tc-retry-btn" class="quiz-action-btn">Try Again</button>
+            <button id="tc-new-btn" class="quiz-action-btn quiz-action-btn-primary">New Challenge →</button>
+        </div>
+    </div>
+</div>
+
+<script src="theme.js"></script>
+<script src="animation.js"></script>
+<script src="translations.js"></script>
+<script src="sidebar.js"></script>
+<script src="config.js"></script>
+<script src="quiz-timed.js"></script>
+</html>

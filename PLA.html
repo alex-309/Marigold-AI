@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="settings.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marigold AI</title>
+    <script>(function(){var t=localStorage.getItem('marigold-theme');if(t==='dark')document.documentElement.classList.add('dark');var c=localStorage.getItem('marigold-contrast');if(c==='high')document.documentElement.classList.add('high-contrast');}());</script>
+</head>
+<body></body>
+<canvas id="bg-canvas"></canvas>
+<div class="topbar">
+    <div class="topbar-brand">
+        <a href="home.html">
+            <img class="homebutton" src="homebutton.png" alt="Home">
+        </a>
+        <div class="topbar-brand-text">
+            <h1 class="title">Marigold AI</h1>
+            <p class="subtitle" data-i18n="topbar_subtitle">Financial Literacy Coach For Teens</p>
+        </div>
+    </div>
+    <div class="topbar-right">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">☀</button>
+    </div>
+</div>
+<div id="sidebar" class="sidebar">
+    <button id="sidebar-tab" aria-label="Toggle menu">
+        <svg class="sidebar-ham" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="sidebar-content">
+        <div class="sidebar-tips-section" id="sidebar-tips-section">
+            <div class="sidebar-tips-toggle sidebar-nav-link" id="sidebar-tips-toggle" onclick="window.MarigoldI18n && window.MarigoldI18n.toggleTips()">
+                <svg class="tips-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                <span class="tips-label" data-i18n="nav_tips">Tips</span>
+                <svg class="tips-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sidebar-tips-options">
+                <a href="budgeting.html"><div class="tips-nav-item" data-i18n="nav_budgeting">Budgeting</div></a>
+                <a href="credit.html"><div class="tips-nav-item" data-i18n="nav_credit">Credit</div></a>
+                <a href="PLA.html"><div class="tips-nav-item" data-i18n-html="nav_pla_html">Predatory<br>Lending<br>Avoidance</div></a>
+                <a href="saving.html"><div class="tips-nav-item" data-i18n-html="nav_saving_html">Saving &amp;<br>Investing</div></a>
+                <a href="banking.html"><div class="tips-nav-item" data-i18n-html="nav_banking_html">Banking<br>Basics</div></a>
+            </div>
+        </div>
+        <a href="scenario.html" class="sidebar-nav-link" data-i18n="nav_scenario">Scenario Practice</a>
+        <a href="calculator.html" class="sidebar-nav-link" data-i18n="nav_calculator">Calculator</a>
+        <a href="expenses.html" class="sidebar-nav-link" data-i18n="nav_expenses">Expense Tracker</a>
+        <a href="quiz.html" class="sidebar-nav-link" data-i18n="nav_quiz">Quiz Center</a>
+        <a href="goals.html" class="sidebar-nav-link" data-i18n="nav_goals">Financial Goals</a>
+        <a href="index.html" class="sidebar-nav-link sidebar-back-link" data-i18n="nav_back">← Back to Menu</a>
+
+        <div class="sidebar-settings-section" id="sidebar-settings-section">
+            <div class="sidebar-settings-toggle" id="sidebar-settings-toggle" onclick="window.MarigoldI18n && window.MarigoldI18n.toggleSettings()">
+                <span class="settings-gear">⚙</span>
+                <span class="settings-label" data-i18n="sidebar_settings">Settings</span>
+                <span class="settings-chevron">▼</span>
+            </div>
+            <div class="sidebar-lang-options">
+                <button class="lang-btn" data-lang="en" onclick="window.MarigoldI18n.setLang('en')">
+                    <span class="lang-flag">🇬🇧</span>
+                    <span class="lang-name" data-i18n="lang_en">English</span>
+                    <span class="lang-check">✓</span>
+                </button>
+                <button class="lang-btn" data-lang="es" onclick="window.MarigoldI18n.setLang('es')">
+                    <span class="lang-flag">🇪🇸</span>
+                    <span class="lang-name" data-i18n="lang_es">Español</span>
+                    <span class="lang-check">✓</span>
+                </button>
+                <button class="lang-btn" data-lang="fr" onclick="window.MarigoldI18n.setLang('fr')">
+                    <span class="lang-flag">🇫🇷</span>
+                    <span class="lang-name" data-i18n="lang_fr">Français</span>
+                    <span class="lang-check">✓</span>
+                </button>
+                <div class="settings-contrast-label" data-i18n="settings_contrast">Contrast</div>
+                <button class="lang-btn contrast-btn" data-contrast="regular" onclick="window.MarigoldContrast && window.MarigoldContrast.set('regular')">
+                    <span class="lang-flag">🔆</span>
+                    <span class="lang-name" data-i18n="settings_regular_colors">Regular Colors</span>
+                    <span class="lang-check">✓</span>
+                </button>
+                <button class="lang-btn contrast-btn" data-contrast="high" onclick="window.MarigoldContrast && window.MarigoldContrast.set('high')">
+                    <span class="lang-flag">⬛</span>
+                    <span class="lang-name" data-i18n="settings_high_contrast">High Contrast</span>
+                    <span class="lang-check">✓</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="PLA-title-tip-page">
+    <h1 data-i18n-html="pla_page_title_html">Predatory<br>Lending<br>Avoidance</h1>
+</div>
+<div class="PLA-tip-page">
+    <h1 data-i18n="tips_section_header">Tips</h1>
+    <p data-i18n="pla_tip1">1. Beware of payday loans — they can charge 300%+ interest annually, turning a $200 loan into hundreds owed in weeks</p>
+    <p data-i18n="pla_tip2">2. If a lender pressures you to sign immediately or says "act now," walk away — that urgency is a major red flag</p>
+    <p data-i18n="pla_tip3">3. Read every line before signing — predatory lenders hide fees, penalties, and automatic renewals in the fine print</p>
+    <p data-i18n="pla_tip4">4. Always verify a lender is licensed in your state — unlicensed lenders have no legal limits on what they can charge</p>
+    <p data-i18n="pla_tip5">5. Explore safer alternatives first — credit unions, payment plans, or borrowing from family are almost always a better deal</p>
+</div>
+<div class="marigold-chat">
+    <div class="chat-header">
+        <h1 data-i18n="chat_header_marigold">Marigold</h1>
+        <div class="clear-buttons">
+            <button id="clear-display" class="clear-btn" data-i18n="chat_clear_view">Clear View</button>
+            <button id="clear-all" class="clear-btn clear-all-btn" data-i18n="chat_clear_all">Clear All</button>
+        </div>
+    </div>
+    <div id="chat-messages"></div>
+</div>
+<div class="question-chatbox">
+    <textarea id="chatbox" class="chatbox" data-i18n-placeholder="chat_placeholder" placeholder="Ask Marigold a question…"></textarea>
+    <button id="send-button" class="send-button" type="button" data-i18n="chat_send">Send</button>
+</div>
+<script src="translations.js"></script>
+<script src="config.js"></script>
+<script src="chat.js"></script>
+<script src="theme.js"></script>
+<script src="animation.js"></script>
+<script src="sidebar.js"></script>
+</html>
